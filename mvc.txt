@@ -1,0 +1,8 @@
+m-model
+v-view
+c-controller
+
+
+Middleware
+In between Request and Response if some functionality
+should happens then we can write different functions and execute one after another using next()
