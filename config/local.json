@@ -5,7 +5,7 @@
 			"port": 27017,
 			"username": null,
 			"password": null,
-			"db": "medibox"
+			"db": "delicious"
 		},
 		"redis" : {
 		  "host": "localhost",

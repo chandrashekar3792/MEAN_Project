@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+const Store=require('../models/Store');
 
 exports.homePage=(req,res)=>{
   res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
@@ -9,7 +11,6 @@ exports.myMiddleware=(req,res,next)=>{
   res.cookie('name','Chandru',{age:24});
   next();
 }
-
 
 //Request types exaples
 //We capture the request from client in three ways
@@ -32,4 +33,12 @@ exports.reverseQueryParameters=(req,res)=>{
   //res.send('it works');
   const reverse=[...req.params.name].reverse().join('');
   res.send(reverse);
+}
+
+
+exports.addStore= async(req,res)=>{
+  console.log('req',req.body);
+  const store = new Store(req.body);
+  await store.save(); // Below code doesn't executed till store.save is completed;
+  res.res.redirect('/');
 }

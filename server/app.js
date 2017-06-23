@@ -10,6 +10,7 @@ const promisify = require('es6-promisify');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
 const routes = require('./routes/index');
+const modelStore=require('./models/Store');
 
 
 // create our Express app
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // After allllll that above middleware, we finally handle our own routes!
+
 app.use('/', routes);
 
 
