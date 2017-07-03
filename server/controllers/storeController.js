@@ -54,3 +54,23 @@ exports.getStore=async (req,res)=>{
      res.json(result);
   });
 }
+
+exports.editStore = async (req,res)=>{
+  const editStore=Store.findOne({_id:req.params.id});
+  editStore.exec(function(err,res){
+    if(!err){
+      res.render('editStore',{title:`Edit ${res.name}`,res});
+    }
+  });
+}
+
+exports.updateStore= async(req,res)=>{
+  const storeUpdate=Store.findOneAndUpdate({_id:req.params.id},req.body);
+  store.exec(function(err,res){
+    if(!err){
+      res.json(store);
+    }else{
+      res.json({message:'Error while updating'});
+    }
+  });
+}
