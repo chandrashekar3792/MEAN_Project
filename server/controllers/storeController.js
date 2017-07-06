@@ -74,3 +74,11 @@ exports.updateStore= async(req,res)=>{
     }
   });
 }
+
+// Executing multiple Promises
+exports.getStoresByTag=async(req,res)=>{
+  const tag=req.params.tag;
+  const tagsPromise=Store.getTagsList();
+  const storesPromise=Store.find({tags:tags});
+  const [tags,stores] = await Promise.all([tagsPromise,storesPromise]);
+}
